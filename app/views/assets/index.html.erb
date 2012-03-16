@@ -1,2 +1,14 @@
-<%= @asset %>
+<p>
+  Assets: 
+  <% unless @assets.empty? %>
+  <ul>
+  <% @assets.each do |a| %>
+  <li><%= a %></li>
+  <% end %>
+  </ul>
+  <% end %>
+</p>
 
+<p>
+  Links: <%= @links %>
+</p>

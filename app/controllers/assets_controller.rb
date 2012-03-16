@@ -5,7 +5,8 @@ class AssetsController < ApplicationController
   end
 
   def index
-    @asset
+    @assets = Asset.all.map { |n| [n.file_name, n.description].join(' => ') }
+    @links = ShortUrl.all
   end
 
 end
