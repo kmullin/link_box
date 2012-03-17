@@ -1,14 +1,10 @@
 <p>
-  Assets: 
-  <% unless @assets.empty? %>
+  Assets:
+  <% unless @hash.empty? %>
   <ul>
-  <% @assets.each do |a| %>
-  <li><%= a %></li>
+  <% @hash.each_pair do |asset,urls| %>
+  <li><%= asset %>: <% urls.each do |url| %><%= "<span><a href=\"#{ShortUrl.full_url(url)}\">#{url}</a></span>".html_safe %><% end %></li>
   <% end %>
   </ul>
   <% end %>
-</p>
-
-<p>
-  Links: <%= @links %>
 </p>

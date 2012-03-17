@@ -1,6 +1,8 @@
 LinkBox::Application.routes.draw do
 
   root :to => "assets#index"
+
+  match 'dl/:link_id' => 'short_urls#download'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

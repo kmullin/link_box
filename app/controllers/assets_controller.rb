@@ -1,12 +1,8 @@
 class AssetsController < ApplicationController
 
-  def new
-    @asset = Asset.new
-  end
-
   def index
-    @assets = Asset.all.map { |n| [n.file_name, n.file_extension].join(' => ') }
-    @links = ShortUrl.all
+    @hash = {}
+    Asset.all.each { |a| @hash[a.file_name] = a.short_urls.map { |u| u.link_id }}
   end
 
 end

@@ -14,11 +14,14 @@
 ActiveRecord::Schema.define(:version => 20120316002452) do
 
   create_table "assets", :force => true do |t|
+    t.string   "path"
+    t.string   "file_name"
+    t.integer  "size"
+    t.string   "content_type"
     t.text     "description"
     t.text     "notes"
-    t.string   "file_name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "short_urls", :force => true do |t|
