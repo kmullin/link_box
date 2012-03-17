@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20120316002452) do
 
   create_table "assets", :force => true do |t|
     t.string   "path"
-    t.string   "file_name"
+    t.string   "filename"
     t.integer  "size"
     t.string   "content_type"
     t.text     "description"
