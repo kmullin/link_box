@@ -1,9 +1,7 @@
 class Asset < ActiveRecord::Base
   has_many :short_urls, :dependent => :destroy
 
-  validates_associated :short_urls, :presence => true
-
-  after_save :create_link
+  after_create :create_link
 
   def file_extension
     File.extname(filename).downcase rescue nil
