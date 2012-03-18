@@ -23,8 +23,7 @@ namespace :assets do
       if Asset.where(:filename => a.filename).empty?
         print " - #{a.filename} "
         a.save
-        url = a.short_urls.create
-        puts url.link_id
+        puts a.short_urls.first.link_id
       end
     end
 

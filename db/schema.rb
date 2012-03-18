@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316002452) do
+ActiveRecord::Schema.define(:version => 20120318202741) do
 
   create_table "assets", :force => true do |t|
     t.string   "path"
@@ -32,5 +32,6 @@ ActiveRecord::Schema.define(:version => 20120316002452) do
   end
 
   add_index "short_urls", ["asset_id"], :name => "index_short_urls_on_asset_id"
+  add_index "short_urls", ["link_id"], :name => "index_short_urls_on_link_id", :unique => true
 
 end
