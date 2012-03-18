@@ -1,6 +1,7 @@
 class Asset < ActiveRecord::Base
   has_many :short_urls, :dependent => :destroy
 
+  validates :filename, :uniqueness => {:scope => :path}
   after_create :create_link
 
   def file_extension

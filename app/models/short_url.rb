@@ -2,8 +2,7 @@ class ShortUrl < ActiveRecord::Base
   belongs_to :asset, :autosave => true
 
   before_validation :generate_random_link, :on => :create
-  validates :link_id, :uniqueness => true
-#  validates :asset_id, :presence => true
+  validates :asset_id, :presence => true
 
   def self.full_url(url)
     '/dl/' + url
