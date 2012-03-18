@@ -4,6 +4,8 @@ class ShortUrl < ActiveRecord::Base
   before_validation :generate_random_link, :on => :create
   validates :asset_id, :presence => true
 
+  attr_accessible :link_id
+
   def self.full_url(url)
     '/dl/' + url
   end

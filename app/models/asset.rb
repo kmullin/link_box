@@ -4,6 +4,8 @@ class Asset < ActiveRecord::Base
   validates :filename, :uniqueness => {:scope => :path}
   after_create :create_link
 
+  attr_accessible :filename, :description, :notes
+
   def file_extension
     File.extname(filename).downcase rescue nil
   end
