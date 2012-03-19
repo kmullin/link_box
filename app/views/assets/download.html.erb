@@ -1,1 +1,2 @@
-<a href='<%= @link_id %>'>download</a>
+<%= @asset.filename %><br>
+<a href='<%= ShortUrl.full_url(@link_id) %>'>download file</a>
