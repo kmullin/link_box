@@ -1,8 +1,19 @@
 LinkBox::Application.routes.draw do
 
-  root :to => "assets#index"
+  root :to => "application#index"
 
-  match 'dl/:link_id' => 'assets#download'
+  devise_for :admins, :path => 'a/'
+
+  get 'a/', :to => "admin#index", :as => "admin_root"
+
+  match 'd/:link_id', :to => 'assets#download', :as => 'download'
+
+  scope 'a/' do
+    resources :short_urls, :path => 'url/', :only => [:create, :destroy]
+    resources :upload, :path => 'u/'
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

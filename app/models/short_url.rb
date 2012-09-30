@@ -6,10 +6,6 @@ class ShortUrl < ActiveRecord::Base
 
   attr_accessible :link_id
 
-  def self.full_url(url)
-    '/dl/' + url
-  end
-
   private
 
   def generate_random_link

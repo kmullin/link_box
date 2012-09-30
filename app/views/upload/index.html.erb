@@ -1,0 +1,11 @@
+<div class="row-fluid">
+  <div class="span4">
+    <div class="well">
+      <h4>File Upload</h4>
+      <%= form_for :file_upload, :html => {:multipart => true} do |f| %>
+        <%= f.file_field :my_file %>
+        <p><button type="submit" class="btn">Upload</button></p>
+      <% end %>
+    </div>
+  </div>
+</div>

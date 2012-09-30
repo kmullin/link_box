@@ -1,0 +1,9 @@
+default: &default
+  mask_uploads: false
+  upload_dir: uploads
+
+production:
+  <<: *default
+
+development:
+  <<: *default

@@ -1,0 +1,28 @@
+<style>
+a.download-link:hover {
+  color:#A92C10;
+  text-decoration:line-through;
+}
+table { table-layout: fixed; }
+table th, table td { overflow: hidden; }
+</style>
+<div class="container">
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width: 25%">Filename</th>
+        <th style="width: 70%">Links</th>
+        <th style="width: 5%; text-align: right">Add</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @hash.each do |asset,urls| -%>
+      <tr>
+        <td><%= asset.original_filename %></td>
+        <td id="<%= "asset-#{asset.id}-links" %>"><% urls.each do |url| %><%= link_to url, download_path(url), :class => 'download-link' %> <% end %></td>
+        <td style="text-align: right"><a class="icon-plus asset-add" id="asset-<%= asset.id %>" style="cursor:pointer"></a></td>
+      </tr>
+    <% end -%>
+    </tbody>
+  </table>
+</div>

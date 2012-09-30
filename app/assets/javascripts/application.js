@@ -13,3 +13,43 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require bootstrap
+
+function addShortUrl(asset_id, link_id, url) {
+  var content = "<a class=\"download-link\" href=\"" + url + "\">" + link_id + "</a> ";
+  $('#asset-' + asset_id + '-links').append(content);
+  bindDownloadLinks();
+}
+
+function removeShortUrl(url) {
+  $('.download-link').each(function(index, value) {
+     if ( $(this).attr('href') == url ) {
+       $(this).remove();
+     }
+  });
+  return true;
+}
+
+function bindDownloadLinks() {
+  $(".download-link").bind('click', function() {
+    var link_id = $(this).html();
+    $.ajax({
+      type: 'DELETE',
+      url: '/a/url/' + link_id,
+      success: function(data) {
+        removeShortUrl(data['url']);
+      }
+    });
+    return false;
+  });
+}
+
+$(document).ready(function() {
+  $(".asset-add").bind('click', function() {
+    var asset = $(this).attr('id').replace('asset-','');
+    $.post('/a/url/', {asset: asset}, function(data) {
+      addShortUrl(asset, data['link_id'], data['url']);
+    });
+  });
+  bindDownloadLinks();
+});

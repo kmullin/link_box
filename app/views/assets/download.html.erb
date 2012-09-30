@@ -1,2 +1,10 @@
-<%= @asset.filename %><br>
-<a href='<%= ShortUrl.full_url(@link_id) %>'>download file</a>
+<div class="span5">
+  <div class="hero-unit">
+    <h4><%= @asset.original_filename %></h4>
+    <ul>
+      <li><small>size: <%= number_to_human_size(@asset.size) %></small></li>
+      <li style="display:none"><small>content_type: <%= @asset.content_type %></small></li>
+    </ul>
+    <%= link_to 'Download', download_path(@link_id), :class => "btn btn-primary btn-large" %>
+  </div>
+</div>
